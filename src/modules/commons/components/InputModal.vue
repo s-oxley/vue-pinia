@@ -1,5 +1,5 @@
 <template>
-  <dialog id="my_modal_1" class="modal" :open="props.open">
+  <dialog class="modal" :open="props.open">
     <div class="modal-box">
       <h3 class="text-lg font-bold">Nuevo proyecto</h3>
       <p class="py-4">
@@ -71,7 +71,10 @@
         </form>
       </div>
     </div>
-    <!-- <div class="modal-backdrop fixed top-0 left-0 z-10 bg-black opacity-40 w-screen h-screen" /> -->
+    <!-- <div
+      v-if="props.open"
+      class="modal-backdrop fixed top-0 left-0 z-10 bg-black opacity-40 w-screen h-screen"
+    /> -->
   </dialog>
 </template>
 

@@ -44,6 +44,9 @@
     <FabButton position="bottom-right" @click="modalOpen = true">
       <AddFolderIcon />
     </FabButton>
+    <FabButton position="bottom-left" @click="customModalOpen = true">
+      <ClipIcon />
+    </FabButton>
     <InputModal
       :open="modalOpen"
       @close="
@@ -59,15 +62,32 @@
         }
       "
     />
+    <CustomModal :open="customModalOpen" @close="() => (customModalOpen = false)">
+      <template #header>
+        <h3 class="text-lg font-bold">Hola!</h3>
+        <p class="py-4">Ingresa el nombre de la persona. Si quiere cerrar presione 'Cerrar'.</p>
+      </template>
+      <template #body>
+        <input
+          ref="nameRef"
+          type="text"
+          placeholder="Nombre"
+          class="input input-bordered w-full flex-1 input-primary"
+        />
+      </template>
+    </CustomModal>
   </div>
 </template>
 
 <script setup lang="ts">
+import CustomModal from '@/modules/commons/components/CustomModal.vue';
 import FabButton from '@/modules/commons/components/FabButton.vue';
 import InputModal from '@/modules/commons/components/InputModal.vue';
 import AddFolderIcon from '@/modules/commons/icons/AddFolderIcon.vue';
+import ClipIcon from '@/modules/commons/icons/ClipIcon.vue';
 
 import { ref } from 'vue';
 
 const modalOpen = ref(false);
+const customModalOpen = ref(false);
 </script>
