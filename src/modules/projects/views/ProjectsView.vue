@@ -4,40 +4,20 @@
       <!-- head -->
       <thead>
         <tr>
-          <th></th>
+          <th>Version</th>
           <th>Nombre</th>
-          <th>Trabajo</th>
-          <th>Color favorito</th>
+          <th>Descripción</th>
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
-        <!-- row 1 -->
-        <tr>
-          <th>1</th>
-          <td>Santiago Oxley Heimen</td>
-          <td>Product Owner</td>
-          <td>Blue</td>
-        </tr>
-        <!-- row 2 -->
-        <tr class="hover:bg-base-300">
-          <th>2</th>
-          <td>Javier Molina</td>
-          <td>Technical Lead</td>
-          <td>Purple</td>
-        </tr>
-        <!-- row 3 -->
-        <tr>
-          <th>3</th>
-          <td>Brice Swyre</td>
-          <td>Account Manager</td>
-          <td>Red</td>
-        </tr>
-        <!-- row 4 -->
-        <tr class="hover:bg-base-300">
-          <th>4</th>
-          <td>Paco Syner</td>
-          <td>Developer</td>
-          <td>Orange</td>
+        <tr v-for="(project, index) in projectStore.getProjects" :key="index">
+          <th>{{ project.version }}</th>
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+          <td>
+            <progress class="progress progress-secondary w-56" value="2" max="100"></progress>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -57,7 +37,13 @@
       "
       @submit="
         (event) => {
-          console.log(event);
+          // console.log(event);
+          projectStore.addProject(
+            event.projectName,
+            event.projectVersion,
+            event.projectDescription,
+            [],
+          );
           modalOpen = false;
         }
       "
@@ -87,6 +73,23 @@ import AddFolderIcon from '@/modules/commons/icons/AddFolderIcon.vue';
 import ClipIcon from '@/modules/commons/icons/ClipIcon.vue';
 
 import { ref } from 'vue';
+import { useProjectStore } from '@/modules/projects/store/projects.store';
+
+const projectStore = useProjectStore();
+
+projectStore.addProject('Neptuno', 1.0, 'Proyecto Random Aguas', []);
+
+// projectStore.getProjects.push({
+//   name: 'Neptuno 2',
+//   version: 4.0,
+//   description: 'Proyecto Random Aguas 2',
+//   tasks: [],
+// });
+
+// setTimeout(() => {
+//   projectStore.getProjects[0].name = 'Neptuno 3';
+//   projectStore.getProjects[1].name = 'Neptuno 3';
+// }, 15000);
 
 const modalOpen = ref(false);
 const customModalOpen = ref(false);
