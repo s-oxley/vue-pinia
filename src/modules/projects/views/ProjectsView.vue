@@ -77,7 +77,7 @@ import { useProjectStore } from '@/modules/projects/store/projects.store';
 
 const projectStore = useProjectStore();
 
-projectStore.addProject('Neptuno', 1.0, 'Proyecto Random Aguas', []);
+// projectStore.addProject('Neptuno', 1.0, 'Proyecto Random Aguas', []);
 
 // projectStore.getProjects.push({
 //   name: 'Neptuno 2',
@@ -93,4 +93,6 @@ projectStore.addProject('Neptuno', 1.0, 'Proyecto Random Aguas', []);
 
 const modalOpen = ref(false);
 const customModalOpen = ref(false);
+
+// projectStore.$subscribe()
 </script>
