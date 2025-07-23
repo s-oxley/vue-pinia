@@ -26,5 +26,17 @@ export const useProjectStore = defineStore('projects', () => {
     projects.value.push(newProject);
   }
 
-  return { projects, getProjects, projectsAreEmpty, addProject };
+  function addTask(project: Project | undefined, taskName: string): void {
+    const task: Task = {
+      id: uuidv4(),
+      name: taskName,
+      completedAt: undefined,
+    };
+
+    if (!project) return;
+
+    project.tasks.push(task);
+  }
+
+  return { projects, getProjects, projectsAreEmpty, addProject, addTask };
 });

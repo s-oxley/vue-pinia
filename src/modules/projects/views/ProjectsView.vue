@@ -24,9 +24,9 @@
     <FabButton position="bottom-right" @click="modalOpen = true">
       <AddFolderIcon />
     </FabButton>
-    <FabButton position="bottom-left" @click="customModalOpen = true">
+    <!-- <FabButton position="bottom-left" @click="customModalOpen = true">
       <ClipIcon />
-    </FabButton>
+    </FabButton> -->
     <InputModal
       :open="modalOpen"
       @close="
@@ -70,7 +70,7 @@ import CustomModal from '@/modules/commons/components/CustomModal.vue';
 import FabButton from '@/modules/commons/components/FabButton.vue';
 import InputModal from '@/modules/commons/components/InputModal.vue';
 import AddFolderIcon from '@/modules/commons/icons/AddFolderIcon.vue';
-import ClipIcon from '@/modules/commons/icons/ClipIcon.vue';
+// import ClipIcon from '@/modules/commons/icons/ClipIcon.vue';
 
 import { ref } from 'vue';
 import { useProjectStore } from '@/modules/projects/store/projects.store';
