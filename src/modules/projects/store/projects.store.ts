@@ -11,8 +11,18 @@ export const useProjectStore = defineStore('projects', () => {
   // getters
   // const getProjects = computed(() => [...projects.value]);
   const getProjects = computed(() => projects.value);
-  //lo que se agrega al array desde el getProjects queda reactivo.
+  // lo que se agrega al array desde el getProjects queda reactivo.
   const projectsAreEmpty = computed(() => projects.value.length === 0);
+  //
+  const projectsWithCompletedTasks = computed(() =>
+    projects.value.map((project) => {
+      return {
+        ...project,
+        tasksCompleted: project.tasks.filter((task) => task.completedAt).length,
+        tasksTotals: project.tasks.length,
+      };
+    }),
+  );
 
   // actions
   function addProject(name: string, version: number, description: string, tasks: Task[]): void {
@@ -38,5 +48,32 @@ export const useProjectStore = defineStore('projects', () => {
     project.tasks.push(task);
   }
 
-  return { projects, getProjects, projectsAreEmpty, addProject, addTask };
+  function deleteTask(project: Project | undefined, task: Task): void {
+    console.log(project?.id, task.id);
+    if (!project) return;
+    project.tasks = project.tasks.filter((t) => t.id !== task.id);
+  }
+
+  function toogleTask(project: Project | undefined, task: Task): void {
+    if (!project) return;
+    //const task = project.tasks.find((task) => task.id === taskId);
+    if (!task) return;
+    task.completedAt = task.completedAt ? undefined : new Date();
+  }
+
+  return {
+    // state
+    projects,
+
+    // getters
+    getProjects,
+    projectsAreEmpty,
+    projectsWithCompletedTasks,
+
+    // actions
+    addProject,
+    addTask,
+    toogleTask,
+    deleteTask,
+  };
 });

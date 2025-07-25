@@ -12,6 +12,7 @@
               <th class="w-14">Completada</th>
               <th>Tarea</th>
               <th>Completada en</th>
+              <th>Acciones</th>
             </tr>
             <tr v-else>
               <th class="colspan-3 text-center">
@@ -22,9 +23,21 @@
           <tbody>
             <!-- row 1 -->
             <tr v-for="(task, index) in project?.tasks" :key="index" class="hover">
-              <th>*</th>
+              <th>
+                <input
+                  type="checkbox"
+                  class="checkbox checkbox-primary"
+                  :checked="!!task.completedAt"
+                  @change="projectStore.toogleTask(project, task)"
+                />
+              </th>
               <td>{{ task.name }}</td>
               <td>{{ task.completedAt }}</td>
+              <td>
+                <ActionButton @click="projectStore.deleteTask(project, task)">
+                  <DeleteIcon />
+                </ActionButton>
+              </td>
             </tr>
             <tr class="hover">
               <td></td>
@@ -53,6 +66,8 @@ import { useProjectStore } from '../store/projects.store';
 import type { Project } from '../interfaces/project.interface';
 import { ref, watch } from 'vue';
 import router from '@/router';
+import ActionButton from '@/modules/commons/components/ActionButton.vue';
+import DeleteIcon from '@/modules/commons/icons/DeleteIcon.vue';
 
 // import { useRoute } from 'vue-router';
 // const route = useRoute();

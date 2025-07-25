@@ -7,16 +7,25 @@
           <th>Version</th>
           <th>Nombre</th>
           <th>Descripción</th>
-          <th>Estado</th>
+          <th>Tareas</th>
+          <th>Progreso</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(project, index) in projectStore.getProjects" :key="index">
+        <tr v-for="(project, index) in projectStore.projectsWithCompletedTasks" :key="index">
           <th>{{ project.version }}</th>
           <td>{{ project.name }}</td>
-          <td>{{ project.description }}</td>
           <td>
-            <progress class="progress progress-secondary w-56" value="2" max="100"></progress>
+            {{ project.description }}
+          </td>
+          <td>{{ project.tasksTotals }}</td>
+          <td>
+            <progress
+              class="progress progress-secondary w-56"
+              :value="project.tasksCompleted"
+              min="0"
+              :max="project.tasksTotals"
+            ></progress>
           </td>
         </tr>
       </tbody>
