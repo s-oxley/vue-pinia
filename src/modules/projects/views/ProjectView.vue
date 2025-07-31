@@ -39,7 +39,7 @@
                 </ActionButton>
               </td>
             </tr>
-            <tr class="hover">
+            <tr>
               <td></td>
               <td>
                 <input

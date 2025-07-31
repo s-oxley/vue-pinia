@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<SideMenu /> > should render with  projects 1`] = `
+"<aside class="bg-base-200 min-h-screen w-72">
+  <h2 class="txt-lg font-bold mx-4">Proyectos</h2><!-- Menu -->
+  <ul class="menu">
+    <li>
+      <details close="">
+        <summary>
+          <router-link-stub to="/project/2fd9f892-515e-466a-8f48-8f8c336dc174" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+        </summary>
+        <ul>
+          <li>
+            <router-link-stub to="/project/2fd9f892-515e-466a-8f48-8f8c336dc174" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+          </li>
+          <li>
+            <router-link-stub to="/project/2fd9f892-515e-466a-8f48-8f8c336dc174" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+          </li>
+          <li>
+            <router-link-stub to="/project/2fd9f892-515e-466a-8f48-8f8c336dc174" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+          </li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <router-link-stub to="/project/afa29287-9814-479d-9f9b-b2cecb33d699" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+    </li>
+    <li>
+      <router-link-stub to="/project/5dbb23b7-1baa-4ff4-bee7-dcd3e68d9baf" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+    </li>
+    <li>
+      <router-link-stub to="/project/30e613fc-d527-40b3-a29e-5731cc6890f6" replace="false" custom="false" ariacurrentvalue="page" viewtransition="false"></router-link-stub>
+    </li>
+  </ul>
+</aside>"
+`;
